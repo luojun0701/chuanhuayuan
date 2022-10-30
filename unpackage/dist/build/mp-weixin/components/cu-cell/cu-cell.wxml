@@ -1,0 +1,1 @@
+<view class="cu-cell"><text>{{a}}</text><block wx:if="{{$slots.right}}"><slot name="right"></slot></block><block wx:else><view class="right"><text>{{b}}</text><cu-icon wx:if="{{c}}" u-i="7503620a-0" bind:__l="__l" u-p="{{c}}"></cu-icon></view></block></view>

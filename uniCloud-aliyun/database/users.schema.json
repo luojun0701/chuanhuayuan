@@ -1,0 +1,36 @@
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"nickName": {
+			"description": "用户昵称"
+		},
+		"avatarUrl": {
+			"description": "头像链接"
+		},
+		"account": {
+			"description": "教务账号"
+		},
+		"password": {
+			"description": "教务密码"
+		},
+		"openid": {
+			"description": "微信openid"
+		},
+		"regate": {
+			"description": "注册时间"
+		},
+		"role": {
+			"description": "1普通用户 2检察官 3管理员"
+		}
+	}
+}

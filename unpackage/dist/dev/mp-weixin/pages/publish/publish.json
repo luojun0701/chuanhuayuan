@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "发布",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "cu-input": "../../components/cu-input/cu-input",
+    "cu-modal": "../../components/cu-modal/cu-modal",
+    "cu-upload": "../../components/cu-upload/cu-upload",
+    "cu-empty": "../../components/cu-empty/cu-empty",
+    "cu-loading": "../../components/cu-loading/cu-loading",
+    "unicloud-db": "../../node-modules/@dcloudio/uni-components/lib/unicloud-db/unicloud-db",
+    "cu-cell": "../../components/cu-cell/cu-cell",
+    "cu-button": "../../components/cu-button/cu-button"
+  }
+}

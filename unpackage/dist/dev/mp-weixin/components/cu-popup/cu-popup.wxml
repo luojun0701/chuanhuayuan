@@ -1,0 +1,1 @@
+<view wx:if="{{a}}" hidden="{{!b}}" class="cu-mask" bindtap="{{c}}" catchtouchmove="{{d}}"></view><view style="{{e}}" class="{{['cu-popup', f]}}"><view class="cu-popup-body"><slot></slot></view></view>

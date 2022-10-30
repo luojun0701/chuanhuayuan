@@ -1,0 +1,1 @@
+<cu-empty wx:if="{{a}}" u-i="05b50a1c-0" bind:__l="__l" u-p="{{a}}"></cu-empty><cu-tabbar u-i="05b50a1c-1" bind:__l="__l"></cu-tabbar>

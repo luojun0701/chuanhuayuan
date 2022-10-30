@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "cu-empty": "../../components/cu-empty/cu-empty",
+    "cu-loading": "../../components/cu-loading/cu-loading",
+    "cu-ps-card": "../../components/cu-ps-card/cu-ps-card",
+    "unicloud-db": "../../node-modules/@dcloudio/uni-components/lib/unicloud-db/unicloud-db",
+    "cu-title": "../../components/cu-title/cu-title",
+    "cu-image": "../../components/cu-image/cu-image",
+    "cu-msg-input": "../../components/cu-msg-input/cu-msg-input"
+  }
+}

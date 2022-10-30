@@ -1,0 +1,29 @@
+/**主题色*/
+.cu-mask {
+  width: 100%;
+  height: 100vh;
+  background: #00000040;
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.cu-popup {
+  width: 100%;
+  position: fixed;
+  display: flex;
+  z-index: 100;
+  transition: all 1.2s;
+}
+.cu-popup-body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cu-popup-bottom-show {
+  transform: translateY(0) !important;
+}
+.cu-popup-center-show {
+  display: flex !important;
+}

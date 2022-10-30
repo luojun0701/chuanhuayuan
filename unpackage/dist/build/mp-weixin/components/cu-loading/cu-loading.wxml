@@ -1,0 +1,1 @@
+<view class="cu-loading"><view wx:if="{{a}}" class="cu-loading-line"></view><view wx:if="{{b}}" class="cu-loading-circle"></view><view class="cu-loading-text" style="{{d}}">{{c}}</view><view wx:if="{{e}}" class="cu-loading-line"></view></view>

@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "cu-button": "../cu-button/cu-button"
+  }
+}

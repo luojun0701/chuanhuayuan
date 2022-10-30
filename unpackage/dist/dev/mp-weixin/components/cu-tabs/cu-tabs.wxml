@@ -1,0 +1,1 @@
+<view class="cu-tabs"><block wx:for="{{a}}" wx:for-item="item"><view class="cu-tabs-item" bindtap="{{item.c}}"><text class="{{['cu-tabs-name', item.b && 'active']}}">{{item.a}}</text></view></block><view class="cu-tabs-line" style="{{b}}"></view></view>

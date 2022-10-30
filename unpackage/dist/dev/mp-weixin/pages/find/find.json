@@ -1,0 +1,13 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "cu-tabs": "../../components/cu-tabs/cu-tabs",
+    "cu-navbar": "../../components/cu-navbar/cu-navbar",
+    "cu-empty": "../../components/cu-empty/cu-empty",
+    "cu-loading": "../../components/cu-loading/cu-loading",
+    "cu-ps-card": "../../components/cu-ps-card/cu-ps-card",
+    "unicloud-db": "../../node-modules/@dcloudio/uni-components/lib/unicloud-db/unicloud-db",
+    "cu-button": "../../components/cu-button/cu-button",
+    "cu-tabbar": "../../components/cu-tabbar/cu-tabbar"
+  }
+}

@@ -1,0 +1,1 @@
+.cu-msg-input{width:100%;display:flex;align-items:flex-end;justify-content:space-around;padding:20rpx 0;position:fixed;bottom:0;left:0;background:#fff;transition:bottom .3s}.cu-msg-input-group{width:588rpx;padding:15rpx 20rpx;border-radius:30rpx;background-color:#f8f8f8;display:flex;align-items:center}.cu-msg-input-group textarea{flex:1}

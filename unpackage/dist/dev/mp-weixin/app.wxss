@@ -1,0 +1,14 @@
+
+page{
+		background-color: #f8f8f8;
+}
+view,text{
+		box-sizing: border-box;
+}
+.margin-top-min{
+		margin-top: 30rpx !important;
+}
+.margin-top-max{
+		margin-top: 80rpx !important;
+}
+page{--status-bar-height:25px;--top-window-height:0px;--window-top:0px;--window-bottom:0px;--window-left:0px;--window-right:0px;--window-magin:0px}[data-c-h="true"]{display: none !important;}

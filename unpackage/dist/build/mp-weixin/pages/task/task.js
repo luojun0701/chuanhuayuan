@@ -1,0 +1,1 @@
+"use strict";var e=require("../../common/vendor.js");if(!Array){(e.resolveComponent("cu-empty")+e.resolveComponent("cu-tabbar"))()}Math||((()=>"../../components/cu-empty/cu-empty.js")+(()=>"../../components/cu-tabbar/cu-tabbar.js"))();const o={__name:"task",setup:o=>(e.onLoad((()=>{e.index.hideTabBar()})),(o,a)=>({a:e.p({show:!0,mode:"code"})}))};wx.createPage(o);

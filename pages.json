@@ -1,0 +1,128 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				// "navigationBarBackgroundColor": "#ffffff"
+			}
+		}
+	    ,{
+            "path" : "pages/me/me",
+            "style" :                                                                                    
+            {
+                "navigationStyle": "custom"
+            }
+            
+        },{
+            "path" : "pages/find/find",
+            "style" :                                                                                    
+            {
+                 "navigationStyle": "custom"
+            }
+            
+        }
+        ,{
+            "path" : "pages/task/task",
+            "style" :                                                                                    
+            {
+                
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{ 
+            "path" : "pages/login/login",
+            "style" :                                                                                    
+            {
+                "navigationStyle": "custom"
+            }
+             
+        }
+        ,{
+            "path" : "pages/webview/webview",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/publish/publish",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "发布",
+                "enablePullDownRefresh": false
+				// "navigationBarBackgroundColor": "#ffffff"
+            }
+            
+        }
+        ,{
+            "path" : "pages/ps-detail/ps-detail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": true
+            }
+            
+        }
+        ,{
+            "path" : "pages/personalInfo/personalInfo",
+            "style" :                                                                                    
+            {
+                "navigationStyle": "custom"
+            }
+            
+        }
+        ,{
+            "path" : "pages/subjectPage/subjectPage",
+            "style" :                                                                                    
+            {
+               "navigationStyle": "custom"
+            }
+            
+        }
+        ,{
+            "path" : "pages/editorPage/editorPage",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/profile/profile",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "个人资料",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"tabBar": {
+		"list": [
+			{
+				"pagePath":"pages/index/index"
+			},
+			{ 
+				"pagePath":"pages/me/me"
+			},
+			{
+				"pagePath":"pages/task/task"
+			},
+			{
+				"pagePath":"pages/find/find"
+			}
+			
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "萝卜桃校园-川华院",
+		"navigationBarBackgroundColor": "#f8f8f8",
+		"backgroundColor": "#f8f8f8"
+	},
+	"uniIdRouter": {}
+}

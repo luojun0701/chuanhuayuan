@@ -1,0 +1,24 @@
+/**主题色*/
+page.data-v-57280228 {
+  background-color: #fff;
+}
+.ht.data-v-57280228 {
+  width: 690rpx;
+  margin: 0 auto;
+}
+.ht-container.data-v-57280228 {
+  display: flex;
+}
+.ht-title.data-v-57280228 {
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: bold;
+  margin: 15rpx 0;
+}
+.ht-count.data-v-57280228 {
+  color: #00000070;
+  font-size: 26rpx;
+}
+.scroll-view-list.data-v-57280228 {
+  height: calc(100vh - 88rpx);
+}

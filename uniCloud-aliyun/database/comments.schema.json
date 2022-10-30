@@ -1,0 +1,51 @@
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete":true
+	},
+	"properties": {
+		"_id": {
+			"description": "存储文档 ID（文章 ID），系统自动生成"
+		},
+		"article_id": {
+			"bsonType": "string",
+			"description": "文章ID",
+			"foreignKey": "articles._id"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"description": "评论者ID",
+			"foreignKey": "users._id"
+		},
+		"comment_content": {
+			"bsonType": "string",
+			"description": "评论内容",
+			"title": "评论内容",
+			"trim": "right"
+		},
+		"child_comments": {
+			"bsonType": "array",
+			"description": "被评论所有内容",
+			"defaultValue":[]
+		},
+		"comment_date": {
+			"bsonType": "timestamp",
+			"description": "评论发表时间",
+			"forceDefaultValue": {
+				"$env": "now"
+			}
+		},
+		"comment_ip": {
+			"bsonType": "string",
+			"description": "评论发表时 IP 地址",
+			"forceDefaultValue": {
+				"$env": "clientIP"
+			}
+		}
+	},
+	"version": "0.0.1"
+}

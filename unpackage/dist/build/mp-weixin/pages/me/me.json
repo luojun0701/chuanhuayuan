@@ -1,0 +1,8 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "cu-navbar": "../../components/cu-navbar/cu-navbar",
+    "cu-card": "../../components/cu-card/cu-card",
+    "cu-tabbar": "../../components/cu-tabbar/cu-tabbar"
+  }
+}

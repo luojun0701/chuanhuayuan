@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "cu-icon": "../../components/cu-icon/cu-icon"
+  }
+}

@@ -1,0 +1,1 @@
+<view class="cu-sticky" style="{{'top:' + a}}"><slot></slot></view>

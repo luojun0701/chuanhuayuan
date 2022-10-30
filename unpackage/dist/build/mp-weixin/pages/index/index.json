@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "cu-swiper": "../../components/cu-swiper/cu-swiper",
+    "cu-title": "../../components/cu-title/cu-title",
+    "cu-empty": "../../components/cu-empty/cu-empty",
+    "cu-loading": "../../components/cu-loading/cu-loading",
+    "cu-card": "../../components/cu-card/cu-card",
+    "unicloud-db": "../../node-modules/@dcloudio/uni-components/lib/unicloud-db/unicloud-db",
+    "cu-sticky": "../../components/cu-sticky/cu-sticky",
+    "cu-ps-card": "../../components/cu-ps-card/cu-ps-card",
+    "cu-tabbar": "../../components/cu-tabbar/cu-tabbar"
+  }
+}

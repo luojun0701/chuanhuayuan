@@ -1,0 +1,30 @@
+/**主题色*/
+.ps-container,
+.comment-container {
+  background: #fff;
+}
+.comment-item {
+  width: 690rpx;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rpx;
+  padding: 20rpx 0;
+  display: flex;
+}
+.comment-item .user {
+  flex: 1;
+  margin-left: 10rpx;
+  font-size: 28rpx;
+  border-bottom: 1rpx solid #f8f8f8;
+}
+.comment-item .user .nickname {
+  color: #00000080;
+}
+.comment-item .user .content {
+  margin-top: 10rpx;
+}
+.comment-item .user .date {
+  color: #00000080;
+  font-size: 24rpx;
+  margin-top: 10rpx;
+}

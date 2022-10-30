@@ -1,0 +1,1 @@
+<view wx:if="{{a}}" class="cu-empty"><image class="cu-empty-icon" src="{{b}}"></image><view class="cu-empty-title">{{c}}</view></view>

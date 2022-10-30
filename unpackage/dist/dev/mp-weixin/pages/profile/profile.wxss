@@ -1,0 +1,32 @@
+/**主题色*/
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profile .avatar {
+  margin-top: 80rpx;
+  position: relative;
+}
+.profile .avatar .icon {
+  width: 66rpx;
+  height: 66rpx;
+  border-radius: 50%;
+  background-color: #3d7eff;
+  text-align: center;
+  line-height: 66rpx;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.profile .form-item {
+  width: 80%;
+  height: 200rpx;
+  display: flex;
+  align-items: center;
+}
+.profile .btn {
+  width: 80%;
+  position: absolute;
+  bottom: 300rpx;
+}

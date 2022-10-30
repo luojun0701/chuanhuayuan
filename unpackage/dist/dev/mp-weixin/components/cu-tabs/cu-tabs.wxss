@@ -1,0 +1,21 @@
+/**主题色*/
+.cu-tabs {
+  position: relative;
+  display: flex;
+  height: 88rpx;
+  align-items: center;
+}
+.cu-tabs-item {
+  padding: 0 30rpx;
+}
+.cu-tabs-line {
+  position: absolute;
+  bottom: 0;
+  height: 6rpx;
+  background: #3d7eff;
+  transition: all 0.3s;
+}
+.active {
+  color: #3d7eff;
+  font-weight: bold;
+}

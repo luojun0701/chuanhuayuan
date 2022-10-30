@@ -1,0 +1,38 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/me/me",
+    "pages/find/find",
+    "pages/task/task",
+    "pages/login/login",
+    "pages/webview/webview",
+    "pages/publish/publish",
+    "pages/ps-detail/ps-detail",
+    "pages/personalInfo/personalInfo",
+    "pages/subjectPage/subjectPage",
+    "pages/editorPage/editorPage"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "萝卜桃校园-川华院",
+    "navigationBarBackgroundColor": "#f8f8f8",
+    "backgroundColor": "#f8f8f8"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index"
+      },
+      {
+        "pagePath": "pages/me/me"
+      },
+      {
+        "pagePath": "pages/task/task"
+      },
+      {
+        "pagePath": "pages/find/find"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

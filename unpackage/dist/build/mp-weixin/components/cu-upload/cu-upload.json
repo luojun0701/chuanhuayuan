@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "cu-image": "../cu-image/cu-image",
+    "cu-icon": "../cu-icon/cu-icon"
+  }
+}

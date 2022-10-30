@@ -1,0 +1,1 @@
+<view class="cu-title" style="{{d}}"><view class="cu-title-left"><text>{{a}}</text></view><block wx:if="{{$slots.right}}"><slot name="right"></slot></block><block wx:else><view wx:if="{{b}}" class="cu-title-right"><text>查看更多</text><cu-icon wx:if="{{c}}" u-i="2769346e-0" bind:__l="__l" u-p="{{c}}"></cu-icon></view></block></view>

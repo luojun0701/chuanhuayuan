@@ -1,0 +1,7 @@
+{
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "cu-empty": "../../components/cu-empty/cu-empty",
+    "cu-tabbar": "../../components/cu-tabbar/cu-tabbar"
+  }
+}

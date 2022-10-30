@@ -1,0 +1,1 @@
+<view class="cu-tabbar" catchtouchmove="{{b}}"><block wx:for="{{a}}" wx:for-item="item"><view class="{{['cu-tabbar-item', item.d && 'active']}}" bindtap="{{item.e}}"><cu-icon wx:if="{{item.b}}" u-i="{{item.a}}" bind:__l="__l" u-p="{{item.b}}"></cu-icon><text>{{item.c}}</text></view></block></view><view style="{{'height:' + c}}"></view>

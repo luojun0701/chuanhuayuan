@@ -1,0 +1,24 @@
+{
+  "name": "authentication",
+  "extensions": {
+    "uni-cloud-jql": {}
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "axios-cookiejar-support": "^1.0.0",
+    "cheerio": "^1.0.0-rc.3",
+    "js-sha1": "^0.6.0",
+    "querystring": "^0.2.0",
+    "request-promise": "^4.2.2",
+    "tough-cookie": "^4.0.0"
+  }
+}

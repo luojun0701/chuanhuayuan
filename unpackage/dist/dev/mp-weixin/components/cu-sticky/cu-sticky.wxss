@@ -1,0 +1,6 @@
+/**主题色*/
+.cu-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 999;
+}

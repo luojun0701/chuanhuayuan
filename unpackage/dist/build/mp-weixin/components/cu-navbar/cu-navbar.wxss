@@ -1,0 +1,1 @@
+.cu-navbar{width:100%;position:fixed;top:0;left:0;z-index:9999}.cu-navbar .navbar-content{display:flex;align-items:center;position:relative}.cu-navbar .navbar-content-left{display:flex;align-items:center;position:absolute;top:0;bottom:0;left:0;padding:0 13px}.cu-navbar .navbar-content-title{width:100%;text-align:center}
