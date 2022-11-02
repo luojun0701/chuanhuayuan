@@ -1,5 +1,6 @@
 "use strict";
 var common_vendor = require("../../common/vendor.js");
+var common_upload = require("../../common/upload.js");
 if (!Array) {
   const _easycom_cu_image2 = common_vendor.resolveComponent("cu-image");
   const _easycom_cu_icon2 = common_vendor.resolveComponent("cu-icon");
@@ -22,31 +23,9 @@ const _sfc_main = {
     const props = __props;
     const files = common_vendor.ref([]);
     common_vendor.ref([]);
-    const upload = () => {
-      return new Promise((resolve) => {
-        common_vendor.index.showLoading({
-          title: "\u4E0A\u4F20\u4E2D"
-        });
-        let promiseAll = [];
-        files.value.forEach((item, index) => {
-          let promise = new Promise((resolve2, reject) => {
-            let result = common_vendor.pn.uploadFile({
-              filePath: item,
-              cloudPath: `lbotao-${new Date().getTime() / 1e3}`
-            });
-            resolve2(result);
-          });
-          promiseAll.push(promise);
-        });
-        Promise.all(promiseAll).then((res) => {
-          let result = [];
-          res.forEach((item) => {
-            result.push(item.fileID);
-          });
-          common_vendor.index.hideLoading();
-          resolve(result);
-        });
-      });
+    const upload = async () => {
+      let result = await common_upload.upload(files.value);
+      return result;
     };
     const chooseImage = () => {
       common_vendor.index.chooseMedia({
@@ -58,6 +37,8 @@ const _sfc_main = {
             common_vendor.index.showToast({
               title: `\u56FE\u7247\u603B\u6570\u4E0D\u80FD\u8D85\u8FC7${props.maxCount}\u5F20`,
               icon: "none"
+            }, (_) => {
+              return;
             });
           else
             files.value = files.value.concat(tempFiles.map((item) => item.tempFilePath));

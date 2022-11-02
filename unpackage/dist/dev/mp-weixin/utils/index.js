@@ -43,8 +43,8 @@ function throttle(fn, delay = 2e3) {
   let timeOut = null;
   return function() {
     if (!timeOut) {
+      fn.apply(this);
       timeOut = setTimeout(() => {
-        fn.apply(this);
         timeOut = null;
       }, delay);
     }

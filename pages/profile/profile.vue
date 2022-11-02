@@ -17,17 +17,25 @@
 </template>
  
 <script setup>
+	import upload from '../../common/upload.js'
 	import { onMounted, ref } from "vue";
 	import {updateDb} from '../../common/db.js'
+	const app=getApp()
 	const userinfo=ref(null)
 	onMounted(()=>{
 		userinfo.value=uni.getStorageSync('userinfo')
 	})
-	const onSubmit=()=>{
+	const onSubmit= async()=>{
 		let parameter={
 			nickName:userinfo.value.nickName,
 			avatarUrl:userinfo.value.avatarUrl
 		}
+		let reg=/(http):\/\/([\w.]+\/?)\S*/　
+		if(reg.test(parameter.avatarUrl)){
+			parameter.avatarUrl=await upload(parameter.avatarUrl)
+		}
+		parameter.avatarUrl=parameter.avatarUrl[0]
+		console.log(parameter.avatarUrl)
 		if(parameter.nickName==''){
 			uni.showToast({
 				title:'昵称不能为空',
@@ -35,15 +43,36 @@
 			})
 			return
 		}
-		 updateDb('users',`_id=='${userinfo.value._id}'`,parameter).then(res=>{
-			 console.log(res)
+		// 根据链接判断是否本地临时文件
+		// uniCloud.uploadFile({
+		// 	filePath:item,
+		// 	cloudPath,
+		// })
+		 updateDb('users',`_id=='${userinfo.value._id}'`,parameter).then(({result})=>{
+			 let {errCode,errMsg}=result
+			 uni.showToast({
+			 	title:errCode==0?'修改成功':errMsg,
+			 	icon:'none'
+			 })
+			 if(errCode==0){//成功
+				 let tmpUserinfo=app.globalData.userinfo
+				 tmpUserinfo.avatarUrl=parameter.avatarUrl
+				 tmpUserinfo.nickName=parameter.nickName
+				 app.globalData.userinfo=tmpUserinfo
+				 //更新本地用户信息
+				 uni.setStorageSync('userinfo',tmpUserinfo)
+				 setTimeout(()=>{
+				 	uni.navigateBack()
+				 },1200)
+			 }
 		 })
 	}
 	const chooseAvatar=()=>{
 		uni.chooseMedia({
+			count:1,
 			mediaType:['image'],
 			success:(res)=>{
-				console.log(res)
+				userinfo.value.avatarUrl=res.tempFiles[0].tempFilePath
 			}
 		})
 	}

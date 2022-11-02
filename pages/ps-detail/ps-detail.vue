@@ -1,6 +1,6 @@
 <template>
 	<view class="ps-container">
-		<unicloud-db  ref="udb" v-slot:default="{data, loading, error}" collection="articles,users,articles-categories" :where="`_id=='${articles_id}'`" 
+		<unicloud-db  v-slot:default="{data, loading, error}" collection="articles,users,articles-categories" :where="`_id=='${articles_id}'`" 
 			field="title,mode,content,img_list,like_count,comment_count,publish_date,user_id{_id,nickName,avatarUrl,role,account},category_id{name}">
 			<view v-if="error">
 				<cu-empty mode="fail"></cu-empty>
@@ -18,7 +18,7 @@
 	<view class="comment-container">
 		<cu-title title="全部评论"></cu-title>
 		<unicloud-db ref="udb"  v-slot:default="{data, loading, error, options}"
-			collection="comments,users" :where="`article_id=='${ps_data?._id}'`"
+			collection="comments,users" :where="`article_id=='${articles_id}'`"
 			field="comment_content,child_comments,comment_date,user_id{_id,nickName,avatarUrl,role}"
 			:page-current="pagination.page" :page-size="pagination.pageSize" :getcount="true">
 			<view v-if="error">
@@ -78,7 +78,7 @@
 			return
 		}
 		udb.value?.add({
-			article_id: ps_data.value._id,
+			article_id: articles_id.value,
 			user_id: getApp().globalData.userinfo._id,
 			comment_content: comment.value
 		}, {

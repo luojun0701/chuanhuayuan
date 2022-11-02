@@ -1,1 +1,1 @@
-.cu-input{padding:15rpx 20rpx;display:flex;align-items:center;justify-content:space-between;border-radius:8rpx;border:1rpx solid #dadbde}.cu-input input{height:48rpx}
+.cu-input{padding:15rpx 20rpx;display:flex;align-items:center;justify-content:space-between;border-radius:8rpx}.cu-input input{width:100%;height:48rpx}

@@ -1,5 +1,6 @@
 "use strict";
 var common_vendor = require("../../common/vendor.js");
+var common_upload = require("../../common/upload.js");
 var utils_index = require("../../utils/index.js");
 var common_db = require("../../common/db.js");
 if (!Array) {
@@ -37,9 +38,8 @@ const _sfc_main = {
     const title = common_vendor.ref("");
     const htmlContent = common_vendor.ref("");
     var category_id = "";
-    const isEeditor = common_vendor.ref(true);
+    const isEeditor = common_vendor.ref(false);
     common_vendor.onShow(() => {
-      console.log("onShow");
       htmlContent.value = common_vendor.index.getStorageSync("html") || "";
     });
     const hidePopup = () => {
@@ -67,14 +67,22 @@ const _sfc_main = {
       }
     };
     const publish = () => {
-      if (title.value == "") {
-        popupShow.value = true;
+      if (title.value == "" && isEeditor.value) {
+        if (popupShow.value) {
+          common_vendor.index.showToast({
+            title: "\u8BF7\u586B\u5199\u6587\u7AE0\u6807\u9898",
+            icon: "none"
+          });
+        } else {
+          popupShow.value = true;
+        }
         return;
       }
       publishFnc();
     };
     const publishFnc = utils_index.throttle(async () => {
       var _a;
+      let tmpHtmlContent = null;
       if (isEeditor.value) {
         if (htmlContent.value == "") {
           common_vendor.index.showToast({
@@ -83,6 +91,15 @@ const _sfc_main = {
           });
           return;
         }
+        let reg = /(\/|http)[^>]+\.(jpg|jpeg|png|gif)/g;
+        let tmpEditorImgs = htmlContent.value.match(reg);
+        let editorImgs = await common_upload.upload(tmpEditorImgs);
+        let i = 0;
+        tmpHtmlContent = htmlContent.value.replace(/(\/|http)[^>]+\.(jpg|jpeg|png|gif)/g, function() {
+          ++i;
+          return editorImgs[i - 1];
+        });
+        console.log(tmpHtmlContent);
       } else {
         if (content.value == "") {
           common_vendor.index.showToast({
@@ -97,7 +114,7 @@ const _sfc_main = {
         title: "\u53D1\u5E03\u4E2D..."
       });
       common_db.addDb("articles", {
-        content: isEeditor.value ? htmlContent.value : content.value,
+        content: isEeditor.value ? tmpHtmlContent : content.value,
         img_list: result,
         user_id: getApp().globalData.userinfo._id,
         title: title.value,
@@ -114,6 +131,7 @@ const _sfc_main = {
           icon: "none"
         });
         if (errCode == 0) {
+          common_vendor.index.removeStorageSync("html");
           common_vendor.index.navigateBack();
         }
       });

@@ -10,7 +10,8 @@
     "pages/ps-detail/ps-detail",
     "pages/personalInfo/personalInfo",
     "pages/subjectPage/subjectPage",
-    "pages/editorPage/editorPage"
+    "pages/editorPage/editorPage",
+    "pages/profile/profile"
   ],
   "window": {
     "navigationBarTextStyle": "black",

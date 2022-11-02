@@ -1,5 +1,6 @@
 "use strict";
 var common_vendor = require("../../common/vendor.js");
+var common_upload = require("../../common/upload.js");
 var common_db = require("../../common/db.js");
 if (!Array) {
   const _easycom_cu_image2 = common_vendor.resolveComponent("cu-image");
@@ -18,15 +19,22 @@ if (!Math) {
 const _sfc_main = {
   __name: "profile",
   setup(__props) {
+    const app = getApp();
     const userinfo = common_vendor.ref(null);
     common_vendor.onMounted(() => {
       userinfo.value = common_vendor.index.getStorageSync("userinfo");
     });
-    const onSubmit = () => {
+    const onSubmit = async () => {
       let parameter = {
         nickName: userinfo.value.nickName,
         avatarUrl: userinfo.value.avatarUrl
       };
+      let reg = /(http):\/\/([\w.]+\/?)\S*/;
+      if (reg.test(parameter.avatarUrl)) {
+        parameter.avatarUrl = await common_upload.upload(parameter.avatarUrl);
+      }
+      parameter.avatarUrl = parameter.avatarUrl[0];
+      console.log(parameter.avatarUrl);
       if (parameter.nickName == "") {
         common_vendor.index.showToast({
           title: "\u6635\u79F0\u4E0D\u80FD\u4E3A\u7A7A",
@@ -34,15 +42,30 @@ const _sfc_main = {
         });
         return;
       }
-      common_db.updateDb("users", `_id=='${userinfo.value._id}'`, parameter).then((res) => {
-        console.log(res);
+      common_db.updateDb("users", `_id=='${userinfo.value._id}'`, parameter).then(({ result }) => {
+        let { errCode, errMsg } = result;
+        common_vendor.index.showToast({
+          title: errCode == 0 ? "\u4FEE\u6539\u6210\u529F" : errMsg,
+          icon: "none"
+        });
+        if (errCode == 0) {
+          let tmpUserinfo = app.globalData.userinfo;
+          tmpUserinfo.avatarUrl = parameter.avatarUrl;
+          tmpUserinfo.nickName = parameter.nickName;
+          app.globalData.userinfo = tmpUserinfo;
+          common_vendor.index.setStorageSync("userinfo", tmpUserinfo);
+          setTimeout(() => {
+            common_vendor.index.navigateBack();
+          }, 1200);
+        }
       });
     };
     const chooseAvatar = () => {
       common_vendor.index.chooseMedia({
+        count: 1,
         mediaType: ["image"],
         success: (res) => {
-          console.log(res);
+          userinfo.value.avatarUrl = res.tempFiles[0].tempFilePath;
         }
       });
     };

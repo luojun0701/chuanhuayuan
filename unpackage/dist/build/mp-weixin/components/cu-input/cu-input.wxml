@@ -1,1 +1,1 @@
-<view class="cu-input"><block wx:if="{{r0}}"><input type="{{a}}" value="{{b}}" placeholder="{{c}}" disabled="{{d}}" maxlength="{{e}}" confirmType="{{f}}" bindconfirm="{{g}}" bindinput="{{h}}"/></block></view>
+<view class="cu-input"><block wx:if="{{r0}}"><input type="{{a}}" value="{{b}}" placeholder="{{c}}" disabled="{{d}}" maxlength="{{e}}" confirmType="{{f}}" bindconfirm="{{g}}" bindinput="{{h}}" style="{{i}}"/></block></view>

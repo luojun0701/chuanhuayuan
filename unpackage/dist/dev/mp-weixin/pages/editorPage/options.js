@@ -10,9 +10,6 @@ var options = {
     name: "ziti",
     parameter: "font"
   }, {
-    name: "lianjie",
-    parameter: "setContents"
-  }, {
     name: "chexiao",
     parameter: "undo"
   }, {

@@ -24,7 +24,7 @@ if (!Math) {
 const _sfc_main = {
   __name: "ps-detail",
   setup(__props) {
-    const ps_data = common_vendor.ref(null);
+    common_vendor.ref(null);
     const pagination = common_vendor.reactive({
       pageSize: 20,
       page: 1
@@ -42,7 +42,7 @@ const _sfc_main = {
         return;
       }
       (_a = udb.value) == null ? void 0 : _a.add({
-        article_id: ps_data.value._id,
+        article_id: articles_id.value,
         user_id: getApp().globalData.userinfo._id,
         comment_content: comment.value
       }, {
@@ -69,7 +69,6 @@ const _sfc_main = {
       });
     });
     return (_ctx, _cache) => {
-      var _a;
       return {
         a: common_vendor.w(({
           data,
@@ -108,18 +107,15 @@ const _sfc_main = {
           path: "a",
           vueId: "3c79a9b4-0"
         }),
-        b: common_vendor.sr(udb, "3c79a9b4-0", {
-          "k": "udb"
-        }),
-        c: common_vendor.p({
+        b: common_vendor.p({
           collection: "articles,users,articles-categories",
           where: `_id=='${articles_id.value}'`,
           field: "title,mode,content,img_list,like_count,comment_count,publish_date,user_id{_id,nickName,avatarUrl,role,account},category_id{name}"
         }),
-        d: common_vendor.p({
+        c: common_vendor.p({
           title: "\u5168\u90E8\u8BC4\u8BBA"
         }),
-        e: common_vendor.w(({
+        d: common_vendor.w(({
           data,
           loading,
           error,
@@ -159,23 +155,23 @@ const _sfc_main = {
           });
         }, {
           name: "d",
-          path: "e",
+          path: "d",
           vueId: "3c79a9b4-6"
         }),
-        f: common_vendor.sr(udb, "3c79a9b4-6", {
+        e: common_vendor.sr(udb, "3c79a9b4-6", {
           "k": "udb"
         }),
-        g: common_vendor.p({
+        f: common_vendor.p({
           collection: "comments,users",
-          where: `article_id=='${(_a = ps_data.value) == null ? void 0 : _a._id}'`,
+          where: `article_id=='${articles_id.value}'`,
           field: "comment_content,child_comments,comment_date,user_id{_id,nickName,avatarUrl,role}",
           ["page-current"]: pagination.page,
           ["page-size"]: pagination.pageSize,
           getcount: true
         }),
-        h: common_vendor.o(submit),
-        i: common_vendor.o(($event) => comment.value = $event),
-        j: common_vendor.p({
+        g: common_vendor.o(submit),
+        h: common_vendor.o(($event) => comment.value = $event),
+        i: common_vendor.p({
           placeholder: "\u53CB\u5584\u8BC4\u8BBA,\u6587\u660E\u53D1\u8A00",
           comment: comment.value,
           value: comment.value

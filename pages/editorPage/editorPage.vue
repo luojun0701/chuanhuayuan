@@ -95,6 +95,7 @@
 					editorCtx.insertImage({
 						src:item.tempFilePath,
 						alt:'图像'+index,
+						width:'100%',
 					})
 				})
 			}

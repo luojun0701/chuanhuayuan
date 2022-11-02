@@ -19,7 +19,8 @@
 </template>
 
 <script setup>
-import { computed, ref } from "vue";
+	import uploadFunc from '../../common/upload.js'
+	import { computed, ref } from "vue";
 	const props=defineProps({
 		maxCount:{
 			type:[Number,String],
@@ -29,31 +30,9 @@ import { computed, ref } from "vue";
 	})
 	const files=ref([])
 	const errIndex=ref([])
-	const upload= ()=>{
-		return new Promise((resolve)=>{
-			uni.showLoading({
-				title:'上传中'
-			})
-			let promiseAll=[]
-			files.value.forEach((item,index)=>{
-				let promise=new Promise((resolve,reject)=>{
-					let result=uniCloud.uploadFile({
-						filePath:item,
-						cloudPath:`lbotao-${new Date().getTime()/1000}`,
-					})
-					resolve(result)
-				})
-				promiseAll.push(promise)
-			})
-			Promise.all(promiseAll).then(res=>{
-				let result=[]
-				res.forEach(item=>{
-					result.push(item.fileID)
-				})
-				uni.hideLoading()
-				resolve(result)
-			})
-		})
+	const upload=async ()=>{
+		let result= await uploadFunc(files.value)
+		return result
 	}
 	const chooseImage=()=>{
 		uni.chooseMedia({
@@ -65,6 +44,8 @@ import { computed, ref } from "vue";
 				uni.showToast({
 					title:`图片总数不能超过${props.maxCount}张`,
 					icon:'none'
+				},_=>{
+					return
 				})
 				else
 				files.value=files.value.concat(tempFiles.map(item=>item.tempFilePath))

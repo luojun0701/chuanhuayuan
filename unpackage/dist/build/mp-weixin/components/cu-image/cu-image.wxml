@@ -1,1 +1,1 @@
-<image src="{{a}}" mode="{{b}}" lazy-load="{{c}}" class="cu-image" style="{{d}}" catchtap="{{e}}"></image>
+<block wx:if="{{a}}"><image src="{{b}}" mode="{{c}}" lazy-load="{{d}}" class="cu-image" style="{{e}}" catchtap="{{f}}"></image></block><block wx:else><image src="{{g}}" mode="{{h}}" lazy-load="{{i}}" class="cu-image" style="{{j}}"></image></block>

@@ -14,12 +14,14 @@
 					</view>
 				</view>
 			</template>
-			<view class="ps-content margin-top-min">
+			<view class=" margin-top-min">
 				<block v-if="detail">
 					<rich-text :nodes="data?.content"></rich-text>
 				</block>
 				<block v-else>
-					{{data?.mode==1?(data?.content):(data?.title)}}
+					<view class="ps-content">
+						{{data?.mode==1?(data?.content):(data?.title)}}
+					</view>
 				</block>
 				<navigator v-if="data?.category_id.length" url="" hover-class="none" class="ht">#{{data?.category_id[0].name}}</navigator>
 			</view>

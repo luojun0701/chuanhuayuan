@@ -51,8 +51,8 @@ export function throttle(fn,delay=2000) {
 	let timeOut=null
 	return function() {
 		if (!timeOut) {
+			fn.apply(this)
 			timeOut = setTimeout(() => {
-				fn.apply(this)
 				timeOut=null
 			}, delay)
 		}

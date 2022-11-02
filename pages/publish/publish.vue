@@ -15,13 +15,13 @@
 		</block>
 		<!-- 普通内容模式 -->
 		<block v-else>
-			<textarea  placeholder="写下你想说的话吧..." v-model="content" class="textarea" maxlength="-1"></textarea>
+			<textarea placeholder="写下你想说的话吧..." v-model="content" class="textarea" maxlength="-1"></textarea>
 		</block>
-		
+
 		<view class="margin-top-min">
 			<cu-upload ref="upload"></cu-upload>
 		</view>
-		
+
 		<unicloud-db v-slot:default="{data, loading, error, options,hasMore}" collection="articles-categories">
 			<view v-if="error">
 				<cu-empty mode="fail"></cu-empty>
@@ -36,7 +36,7 @@
 				</block>
 			</scroll-view>
 		</unicloud-db>
-			<cu-cell :title="isEeditor?'富文本内容':'普通内容'" >
+		<cu-cell :title="isEeditor?'富文本内容':'普通内容'">
 			<template #right>
 				<switch :checked="isEeditor" @change="changeEditor" />
 			</template>
@@ -46,6 +46,7 @@
 </template>
 
 <script setup>
+	import uploadFunc from '../../common/upload.js'
 	import {
 		throttle
 	} from '../../utils/index.js'
@@ -62,28 +63,27 @@
 	const btnStyle = {
 		marginTop: '100rpx'
 	}
-	const popupShow=ref(false)//填写标题弹窗
+	const popupShow = ref(false) //填写标题弹窗
 	const current = ref(null)
 	const content = ref('') //接收普通内容
-	const title=ref('')
+	const title = ref('')
 	const htmlContent = ref('') //接收富文本
 	var category_id = '' //分类id
-	const isEeditor = ref(true)
+	const isEeditor = ref(false)
 	onShow(() => {
-		console.log('onShow')
 		htmlContent.value = uni.getStorageSync('html') || ''
 	})
-	const hidePopup=()=>{
-		popupShow.value=false
+	const hidePopup = () => {
+		popupShow.value = false
 	}
-	const closePopup=()=>{
-		popupShow.value=false
+	const closePopup = () => {
+		popupShow.value = false
 	}
 	const changeEditor = (e) => {
 		let tmp = e.detail.value
 		isEeditor.value = tmp
-	} 
-	const toEditorPage = () => {	
+	}
+	const toEditorPage = () => {
 		uni.navigateTo({
 			url: '/pages/editorPage/editorPage'
 		})
@@ -95,19 +95,27 @@
 			current.value = null
 		} else {
 			category_id = id
-			current.value = index 
+			current.value = index
 		}
 	}
 	const publish = () => {
-		if(title.value==''){
-			popupShow.value=true
+		if (title.value == ''&&isEeditor.value) {
+			if(popupShow.value){
+				uni.showToast({
+					title: '请填写文章标题',
+					icon: 'none'
+				})
+			}else{
+				popupShow.value = true	
+			}
 			return
 		}
 		//使用节流防止误操作
 		publishFnc()
 	}
 	const publishFnc = throttle(async () => {
-		if(isEeditor.value){
+		let tmpHtmlContent=null//富文本内容
+		if (isEeditor.value) {
 			if (htmlContent.value == '') {
 				uni.showToast({
 					title: '内容不能为空',
@@ -115,7 +123,17 @@
 				})
 				return
 			}
-		}else{
+			let reg = /(\/|http)[^>]+\.(jpg|jpeg|png|gif)/g
+			let tmpEditorImgs=htmlContent.value.match(reg)//提取富文本内的图片
+			let editorImgs= await uploadFunc(tmpEditorImgs)// 上传富文本内的图片
+			// 替换富文本内的图片
+			let i =0
+			tmpHtmlContent=htmlContent.value.replace(/(\/|http)[^>]+\.(jpg|jpeg|png|gif)/g, function(){
+				++i
+				return editorImgs[i-1]
+			})
+			console.log(tmpHtmlContent)
+		} else {
 			if (content.value == '') {
 				uni.showToast({
 					title: '内容不能为空',
@@ -124,17 +142,16 @@
 				return
 			}
 		}
-
-		let result = await upload.value?.upload()
+		let result = await upload.value?.upload() //封面图片
 		uni.showLoading({
 			title: '发布中...'
 		})
 		addDb('articles', {
-			content: isEeditor.value?htmlContent.value:content.value,
+			content: isEeditor.value ? tmpHtmlContent : content.value,
 			img_list: result,
 			user_id: getApp().globalData.userinfo._id,
-			title:title.value,
-			mode:isEeditor.value?2:1,//1普通内容2富文本
+			title: title.value,
+			mode: isEeditor.value ? 2 : 1, //1普通内容2富文本
 			category_id
 		}).then(({
 			result
@@ -147,11 +164,11 @@
 				icon: 'none'
 			})
 			if (errCode == 0) {
+				uni.removeStorageSync('html')
 				uni.navigateBack()
 			}
 		})
 	})
-	
 </script>
 
 <style lang="scss">

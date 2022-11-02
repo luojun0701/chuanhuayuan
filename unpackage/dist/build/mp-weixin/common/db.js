@@ -1,1 +1,1 @@
-"use strict";const e=require("./vendor.js").pn.database();exports.addDb=(s,t)=>new Promise((d=>{e.collection(s).add(t).then((e=>{d(e)}))}));
+"use strict";const e=require("./vendor.js").pn.database();exports.addDb=(t,o)=>new Promise((n=>{e.collection(t).add(o).then((e=>{n(e)}))})),exports.updateDb=(t,o,n)=>new Promise((r=>{e.collection(t).where(o).update(n).then((e=>{r(e)}))}));

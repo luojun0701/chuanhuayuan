@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "个人资料",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "cu-image": "../../components/cu-image/cu-image",
+    "cu-icon": "../../components/cu-icon/cu-icon",
+    "cu-input": "../../components/cu-input/cu-input",
+    "cu-button": "../../components/cu-button/cu-button"
+  }
+}

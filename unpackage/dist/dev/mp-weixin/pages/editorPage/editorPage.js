@@ -62,7 +62,8 @@ const _sfc_main = {
           tempFiles.forEach((item, index) => {
             editorCtx.insertImage({
               src: item.tempFilePath,
-              alt: "\u56FE\u50CF" + index
+              alt: "\u56FE\u50CF" + index,
+              width: "100%"
             });
           });
         }
